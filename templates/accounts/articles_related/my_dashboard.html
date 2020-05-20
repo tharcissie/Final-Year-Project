@@ -1,0 +1,153 @@
+{% extends 'base_account.html' %}
+
+{% block content %}
+        <div class="mg-t-80">
+          <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-3 br-section-wrapper">
+              <h3 id="date"> </h3>
+            </div>
+            <div class="col-lg-4"></div>
+          </div>
+
+        </div>
+        <div class="row row-sm mg-t-50">
+          {% if request.user.is_superuser %}
+              <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
+                <div class="bg-primary rounded overflow-hidden">
+                  <div class="pd-x-20 pd-t-20 d-flex align-items-center">
+                    <i class="icon ion-person-stalker tx-60 lh-0 tx-white op-7"></i>
+                    <div class="mg-l-20">
+                      <p class="tx-16 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Subscribers</p>
+                      <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">{{subscribers}}</p>
+                    </div>
+                  </div>
+                  <div id="ch4" class="ht-50 tr-y-1"></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
+                <div class="bg-info rounded overflow-hidden">
+                  <div class="pd-x-20 pd-t-20 d-flex align-items-center">
+                    <i class="fa fa-file-alt tx-60 lh-0 tx-white op-7"></i>
+                    <div class="mg-l-20">
+                      <p class="tx-16 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Articles</p>
+                      <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">{{total_Articles}}</p>
+                    </div>
+                  </div>
+                  <div id="ch4" class="ht-50 tr-y-1"></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
+                <div class="bg-danger rounded overflow-hidden">
+                  <div class="pd-x-20 pd-t-20 d-flex align-items-center">
+                    <i class="fa fa-map tx-60 lh-0 tx-white op-7"></i>
+                    <div class="mg-l-20">
+                      <p class="tx-16 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Announcements</p>
+                      <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">{{announcements}}</p>
+                    </div>
+                  </div>
+                  <div id="ch4" class="ht-50 tr-y-1"></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
+                <div class="bg-teal rounded overflow-hidden">
+                  <div class="pd-x-20 pd-t-20 d-flex align-items-center">
+                    <i class="icon ion-person tx-60 lh-0 tx-white op-7"></i>
+                    <div class="mg-l-20">
+                      <p class="tx-16 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Total users</p>
+                      <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">{{total_users}}</p>
+                    </div>
+                  </div>
+                  <div id="ch4" class="ht-50 tr-y-1"></div>
+                </div>
+              </div>
+          {% else %}
+              <div class="col-sm-6 col-xl-3">
+                <div class="bg-info rounded overflow-hidden">
+                  <div class="pd-x-20 pd-t-20 d-flex align-items-center">
+                    <i class="fa fa-server tx-60 lh-0 tx-white op-7"></i>
+                    <div class="mg-l-20">
+                      <p class="tx-10 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Total Articles</p>
+                      <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">{{total_articles}}</p>
+                      <span class="tx-11 tx-roboto tx-white-8">24% higher yesterday</span>
+                    </div>
+                  </div>
+                  <div id="ch1" class="ht-50 tr-y-1"></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3 mg-t-20 mg-sm-t-0">
+                <div class="bg-purple rounded overflow-hidden">
+                  <div class="pd-x-20 pd-t-20 d-flex align-items-center">
+                    <i class="icon ion-compose tx-60 lh-0 tx-white op-7"></i>
+                    <div class="mg-l-20">
+                      <p class="tx-10 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Most commented Articles</p>
+                      <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">29</p>
+                      <span class="tx-11 tx-roboto tx-white-8">$390,212 before tax</span>
+                    </div>
+                  </div>
+                  <div id="ch3" class="ht-50 tr-y-1"></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
+                <div class="bg-teal rounded overflow-hidden">
+                  <div class="pd-x-20 pd-t-20 d-flex align-items-center">
+                    <i class="icon ion-heart tx-60 lh-0 tx-white op-7"></i>
+                    {% for article in articles_likes %}
+                    <div class="mg-l-20">
+                      <p class="tx-10 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Most liked Articles</p>
+                            <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">{{article.likes.count}}</p>
+                      <span class="tx-11 tx-roboto tx-white-8">23% average duration</span>
+                    </div>
+                    {% endfor %}
+                  </div>
+                  <div id="ch2" class="ht-50 tr-y-1"></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
+                <div class="bg-primary rounded overflow-hidden">
+                  <div class="pd-x-20 pd-t-20 d-flex align-items-center">
+                    <i class="fa fa-eye tx-60 lh-0 tx-white op-7"></i>
+                    <div class="mg-l-20">
+                      <p class="tx-10 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Most Viewed Articles</p>
+                      <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">32</p>
+                      <span class="tx-11 tx-roboto tx-white-8">65.45% on average time</span>
+                    </div>
+                  </div>
+                  <div id="ch4" class="ht-50 tr-y-1"></div>
+                </div>
+              </div>
+          {% endif %}
+        
+        </div>
+
+     <div class="br-section-wrapper mg-t-30">
+          <div class="row">
+
+            <div class="col-xl-8 mg-t-20 mg-xl-t-0">
+              <div class="bd pd-l-20 pd-y-30 pd-r-30">
+                <div id="chartBar1" class="ht-200 ht-sm-300"></div>
+              </div>
+            </div>
+            <div class="col-xl-4 mg-t-20 mg-xl-t-0">
+              <h2>Subscribers</h2>
+              <div class="bd pd-l-20 pd-y-30 pd-r-30">
+                <div id="morrisDonut1" class="ht-250 ht-sm-290"></div>
+              </div>
+            </div>
+          </div>
+
+
+    </div>
+<script>
+      let showDate = function(message){
+        document.getElementById('date').textContent = message 
+    }
+    let date = new Date();
+    showDate(date.toDateString());
+
+
+ 
+  
+</script>
+{% endblock  %}
+

@@ -1,0 +1,165 @@
+{% extends 'base_account.html' %}
+{% load widget_tweaks %} 
+
+{% load static %}
+
+
+{% block content %}
+
+<div class="br-section-wrapper mg-t-100 ">
+
+          <div class="row row-sm mg-t-20">
+            <div class="col-sm-6 col-lg-2">
+   
+            </div><!-- col-4 -->
+            <div class="col-sm-6 col-lg-8 mg-t-20 mg-sm-t-0">
+              <div class="card shadow-base widget-7">
+                <div class="tx-center">
+                  <img src="{{ user.profile.image.url }}" class="wd-100 rounded-circle" alt="">
+                  <h4 class="tx-normal tx-inverse tx-roboto mg-t-20 mg-b-2">{{user.first_name}} {{user.last_name}}</h4>
+                  <p class="mg-b-20">{{user.email}}</p>
+                  <p class="mg-b-20">Believer, Happiness Seeker,  I hate it when I'm about to hug someone really sexy, but my face hits the mirror. </p>
+
+                    <form method="post" novalidate enctype="multipart/form-data">
+                        {% csrf_token %}
+                            {% comment %} {{ u_form }} {% endcomment %}
+                            {{ p_form }}
+                    
+                  <p class="mg-b-0 mg-t-20">
+                    <button type="submit" class="btn btn-info pd-x-50">Change Profile Image</button>
+                  </p>
+                  </form>
+                </div>
+              </div><!-- card -->
+            </div><!-- col-4 -->
+            <div class="col-sm-6 col-lg-2 mg-t-20 mg-lg-t-0">
+
+            </div><!-- col-4 -->
+          </div><!-- row -->
+  </div>
+
+{% endblock %}
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} 
+
+
+
+    <h4 class="mb-4 mt-2">Profile</h4>
+    <hr class="mt-1">
+  <div class="row">
+    <div class="col-lg-4 col-md-8 col-sm-10">
+        <h6>Profile Photo</h6>
+    </div>
+   <div class="col-lg-2 col-md-8 col-sm-10">
+            <img class="rounded-circle profile-pic" src="{{ user.profile.image.url }}" >
+            
+    </div>
+    <div class="col-lg-6 col-md-8 col-sm-10">
+        <section style="padding-bottom: 29px">
+ 
+        </section>
+        <section>
+            <p>Photo must be jpg,png or jpeg <br>
+               with maximum  size of 700 KB</p>
+        </section>
+
+    </div> 
+  </div>
+  <hr class="mt-5 mb-3">
+  <div class="row">
+      <div class="col-lg-6 col-md-8 col-sm-10">
+            <h6>User Information</h6>
+      </div>
+      <div class="col-lg-6 col-md-8 col-sm-10">
+            <form method="post" novalidate enctype="multipart/form-data">
+                    {% csrf_token %}
+                        {% comment %} {{ u_form }} 
+                        {{ p_form }}
+                    <button type="submit" class="btn btn-primary btn-block">Update</button>
+            </form>
+      </div>
+  </div>  {% endcomment %}

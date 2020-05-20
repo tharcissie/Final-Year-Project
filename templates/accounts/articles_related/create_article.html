@@ -1,0 +1,103 @@
+{% extends "base_account.html" %}
+
+{% block content %}
+<div class="form-layout form-layout-1 br-section-wrapper mg-t-100">
+
+  <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      {{form.media}}
+      {% include 'includes/form.html' %}
+      <div class="mt-5">
+      <button type="submit" class=".btn-change-create btn btn-info float-right ">Create</button>
+      </div>
+  </form>
+
+</div>
+{% endblock %}
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} 
+
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+            <div class="row mg-b-25">
+
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">Title:</label>
+                  {{ form.subject}}
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">Cover Image:</label>
+                  {{ form.picture}}
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group mg-b-10-force">
+                  <label class="form-control-label">Body of Article:</label>
+                  {{ form.message}}
+                </div>
+              </div>
+              {% comment %} <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">College:</label>
+                  {{ form.college}}
+                </div>
+              </div> {% endcomment %}
+              {% comment %} <div class="col-lg-8">
+                <div class="form-group mg-b-10-force">
+                  <label class="form-control-label">College</label>
+                  <select class="form-control select2" data-placeholder="Choose country">
+                       {% for college in colleges %}
+
+                        <option>{{ college.name }}</option>
+
+                       {% endfor %} 
+                  </select>
+                </div>
+              </div> 
+              <div class="col-lg-8">
+                <div class="form-group">
+                  <label class="form-control-label">Tags:</label>
+                  {{ form.tags}}
+                </div>
+              </div>
+ 
+              
+            </div>
+
+            <div class="form-layout-footer">
+              <button class="btn btn-info">Save Article</button>
+              <button class="btn btn-secondary">Cancel</button>
+            </div>
+            </form> {% endcomment %} 

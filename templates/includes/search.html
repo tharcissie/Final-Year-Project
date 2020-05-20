@@ -1,0 +1,11 @@
+
+<div class="row align-items-center my-4">
+    <div class="col-10 offset-1 col-lg-8 offset-lg-2 div-wrapper d-flex justify-content-center align-items-center md-form mt-0">
+        <form class="input-group md-form form-sm form-1 pl-0 col-10" action="{% url 'search_result' %}" method="GET">
+            <input class="form-control my-0 py-1 red-border" name="q" type="search" placeholder="Search" aria-label="Search" value="{{request.GET.q}}">
+            <div class="input-group-append" >
+                <button type="submit"  class="input-group-text "><i class="fas fa-search text-grey" aria-hidden="true"></i></button>
+            </div>
+        </form>
+    </div>
+</div>

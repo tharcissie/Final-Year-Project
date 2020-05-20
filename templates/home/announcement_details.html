@@ -1,0 +1,29 @@
+{% extends 'my_base.html' %}
+{% load socialaccount%}
+{% load humanize %}
+
+{% block content %}
+{% comment %} <style>
+
+.replies{
+    display:none;
+}
+
+</style> {% endcomment %}
+
+
+
+    <div class="row  mg-t-80">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 br-section-wrapper">
+            <h3 class="text-center mt-1 tx-inverse"> <b>{{announcement.title}}</b></h3>
+            <div class="pd-x-30 mg-t-60 tx-inverse">
+
+                {{announcement.content|safe}}
+  
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+
+    </div>
+{% endblock  %}

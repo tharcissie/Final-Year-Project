@@ -1,0 +1,48 @@
+{% extends "base_account.html" %}
+{% load humanize %}
+
+
+{% block content %}
+<div class="mg-t-50">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-5 br-section-wrapper mg-t-40 mg-b-20">
+            <form method="get">
+              <div class="input-group">
+              {{ all_articles.form.as_p }}
+              <div class="input-group-append">
+                <button class="btn btn-info mg-l-10 filter-btn" type="submit">Filter</button>
+              </div>
+            </div>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+<div class="bd rounded table-responsive br-section-wrapper">
+    <table class="table table-bordered mg-b-0">
+      <thead>
+        <tr>
+          <th>subject</th>
+          <th>message</th>
+          <th>college</th>
+          <th>author</th>
+          <th>Published time</th>
+
+        </tr>
+      </thead>
+      <tbody>
+          {% for article in all_articles.qs %}
+          <tr>
+            <td>{{article.subject}}</td>
+            <td>{{article.snippet|safe}}</td>
+            <td>{{article.college}}</td>
+            <td>{{article.author}}</td>
+            <td>{{article.created_at|naturaltime}}</td>
+
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+/* #id_email{
+    width: 250px;
+    height: 35px;
+} */
+
+#id_article_category{
+    margin-left: -15px;
+    width: 250px;
+    height: 35px;
+}
+.homepage-text{
+    color: white;
+    font-size: 18px;
+}
+
+
+
+
+.fadeheader{
+    color: blueviolet;
+    /* font-size: 30px; */
+    animation: fade 5s ease forwards;
+}
+
+@keyframes fade{
+    from{
+        opacity: 1;
+        pointer-events: all;
+        
+    }
+
+    to{
+        opacity: 0;
+        pointer-events: none;
+    }
+}

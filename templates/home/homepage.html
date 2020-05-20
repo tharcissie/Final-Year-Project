@@ -1,0 +1,71 @@
+{% extends 'my_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+{% block content %}
+    
+{% include "includes/search.html" %}
+
+<h1 class="text-center fadeheader">Welcome to ur blog</h1>
+
+<div class="row br-section-wrapper mg-t-50">
+  <div class="col-lg-3">
+
+    {% include "includes/leftside_homepage.html" %}
+
+  </div>
+  <div class="col-lg-9">
+
+    <div class="br-pagebody  pd-sm-x-30 mx-wd-1350">
+      <div class="row row-sm ">
+        <div class="col-lg-8">
+            <div class="row">
+            {% for article in articles %}
+
+                <div class="col-lg-6 mg-t-20 mg-lg-t-0 mg-b-20">
+                  <div class="card shadow-base bd-0 pd-25 ht-100p">
+                      <div class="media mg-b-15">
+                        <img src="{{ article.author.profile.image.url }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="Image">
+                        <div class="media-body mg-t-2">
+                          <h6 class="mg-b-5 tx-14"><a href="" class="tx-inverse">{{ article.author }}</a></h6>
+                          <div class="tx-12">{{ article.created_at }}</div>
+                        </div>
+                      </div>
+                     <a href="{% url 'detail_articles' article.id %}"> <p>{{ article.topic }}</p></a>
+                      <a href="{% url 'detail_articles' article.id %}"><img src="{{ article.picture.url }}" class="img-fluid mg-b-25" alt="" style="width: fit-content; height:150px"></a>
+                      <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="{% url 'detail_articles' article.id %}" class="tx-inverse hover-info">{{ article.snippet|safe}}</a></h5>
+                      
+                      <div style="display:flex">
+                        {% for tag in article.tags.all %}
+                        <a href="{% url 'tagged' tag.slug %}" class="mr-1 badge badge-info">#{{ tag.name }} </a>
+                        {% endfor %}
+                    </div>
+                    
+                      <p class="mg-b-0 tx-13 mt-4">
+
+                      <a href="" class="tx-info">{{ article.likes.count }} Likes</a>
+                      <a href="#" class="tx-info mg-l-20">{{ article.comments.count }} Comments</a>
+
+                      <a href="" class="tx-info mg-l-20"> 2 Views</a>
+
+                      </p>
+
+                     
+                </div>
+                </div>
+
+                {% endfor %}
+            </div>  
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+          <h4 class="text-center tx-inverse">Colleges</h4>
+          {% include "includes/rightside_homepage.html" %}
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock  %}

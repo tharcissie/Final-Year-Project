@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@themepixels">
+    <meta name="twitter:creator" content="@themepixels">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bracket Plus">
+    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="twitter:image" content="http://themepixels.me/bracketplus/img/bracketplus-social.png">
+
+    <!-- Facebook -->
+    <meta property="og:url" content="http://themepixels.me/bracketplus">
+    <meta property="og:title" content="Bracket Plus">
+    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+
+    <meta property="og:image" content="http://themepixels.me/bracketplus/img/bracketplus-social.png">
+    <meta property="og:image:secure_url" content="http://themepixels.me/bracketplus/img/bracketplus-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+
+    <!-- Meta -->
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="author" content="ThemePixels">
+
+    <title>Morris Chart Design - Bracket Plus Responsive Bootstrap 4 Admin Template</title>
+
+    <!-- vendor css -->
+    <link href="{% static 'lib/@fortawesome/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+		<link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+		<link href="{% static 'lib/highlightjs/styles/github.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/morris.js/morris.css' %}" rel="stylesheet">
+
+    <!-- Bracket CSS -->
+    <link rel="stylesheet" href="{% static 'css/bracket.css' %}">
+  </head>
+
+  <body>
+
+   
+
+    <div class="br-mainpanel">
+
+
+      <div class="br-pagebody">
+        <div class="br-section-wrapper">
+
+  
+<div class="row ">
+  <div class="col-lg-4">
+    <div class="pd-y-40 bd">
+      <div id="morrisDonut1" class="ht-200 ht-sm-250"></div>
+    </div>
+  </div>
+ 
+</div>
+
+
+
+     
+ 
+
+
+    </div><!-- br-mainpanel -->
+    <!-- ########## END: MAIN PANEL ########## -->
+
+    <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'lib/jquery-ui/ui/widgets/datepicker.js' %}"></script>
+    <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'lib/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'lib/peity/jquery.peity.min.js' %}"></script>
+    <script src="{% static 'lib/highlightjs/highlight.pack.min.js' %}"></script>
+    <script src="{% static 'lib/raphael/raphael.min.js' %}"></script>
+    <script src="{% static 'lib/morris.js/morris.min.js' %}"></script>
+
+    <script src="{% static 'js/bracket.js' %}"></script>
+    <script src="{% static 'js/chart.morris.js' %}"></script>
+    <script>
+  
+
+
+
+  new Morris.Donut({
+    element: 'morrisDonut1',
+    data: [
+      {label: "Men", value: 120},
+      {label: "Women", value: 30},
+      {label: "Kids", value: 20}
+    ],
+    colors: ['#3D449C','#268FB2','#74DE00'],
+    resize: true
+  });
+
+
+
+
+//   new Morris.Bar({
+//   element: 'my-morrisBar1',
+//   data: [
+//     { y: '2006', a: 10, b: 10 },
+//     { y: '2007', a: 75,  b: 65 },
+//     { y: '2008', a: 50,  b: 40 },
+//     { y: '2009', a: 75,  b: 65 },
+//     { y: '2010', a: 50,  b: 40 },
+//   ],
+//   xkey: 'y',
+//   ykeys: ['a', 'b'],
+//   labels: ['Series A', 'Series B'],
+//   barColors: ['#5058AB', '#14A0C1'],
+//   gridTextSize: 11,
+//   hideHover: 'auto',
+//   resize: true
+// });
+
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+<div class="row tx-center">
+    <div class="col-lg-6">
+      <div class="pd-y-20 bd">
+        <div id="morrisDonut1" class="ht-200 ht-sm-250"></div>
+      </div>
+    </div><!-- col-6 -->
+    <div class="col-lg-6 mg-t-20 mg-lg-t-0">
+      <div class="pd-y-20 bd"><div id="morrisDonut2" class="ht-200 ht-sm-250"></div></div>
+    </div><!-- col-6 -->
+  </div><!-- row -->
+
+
+
+
+
+new Morris.Donut({
+    element: 'morrisDonut1',
+    data: [
+      {label: "Men", value: 120},
+      {label: "Women", value: 30},
+      {label: "Kids", value: 20}
+    ],
+    colors: ['#3D449C','#268FB2','#74DE00'],
+    resize: true
+  });

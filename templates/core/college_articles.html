@@ -1,0 +1,214 @@
+{% extends 'my_base.html' %}
+
+
+{% block content %}
+{% with url_name=request.resolver_match.url_name %}
+
+    {% if url_name == 'cst' %} 
+    <div class="row mg-t-30">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 br-section-wrapper">
+            <h3 class="text-center">College of Science and Technology</h3>
+            <div class="row ">
+            {% for article in articles_cst %}
+
+                <div class="col-lg-3 mg-t-20 mg-lg-t-0">
+                  <div class="card shadow-base bd-0 pd-25 ht-100p">
+                      <div class="media mg-b-15">
+                        <img src="{{ article.author.profile.image.url }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="Image">
+                        <div class="media-body mg-t-2">
+                          <h6 class="mg-b-5 tx-14"><a href="" class="tx-inverse">{{ article.author }}</a></h6>
+                          <div class="tx-12">{{ article.created_at }}</div>
+                        </div>
+                      </div>
+                     <a href="{% url 'detail_articles' article.id %}"> <p>{{ article.subject }}</p></a>
+                      <a href="{% url 'detail_articles' article.id %}"><img src="{{ article.picture.url }}" class="img-fluid mg-b-25" alt=""></a>
+                      <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="{% url 'detail_articles' article.id %}" class="tx-inverse hover-info">{{ article.snippet }}</a></h5>
+                      <p class="mg-b-0 tx-13">
+                      <a href="" class="tx-info">18 Likes</a>
+                      <a href="" class="tx-info mg-l-20"> 2 Comments{{comments.count}}</a>
+                      <a href="" class="tx-info mg-l-20"> 2 Views</a>
+
+                      </p>
+                  </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+    {% elif url_name == 'cbe' %}
+      <div class="row mg-t-30">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 br-section-wrapper">
+            <h3 class="text-center">College of Business and Economics</h3>
+            <div class="row ">
+            {% for article in articles_cbe %}
+
+                <div class="col-lg-3 mg-t-20 mg-lg-t-0">
+                  <div class="card shadow-base bd-0 pd-25 ht-100p">
+                      <div class="media mg-b-15">
+                        <img src="{{ article.author.profile.image.url }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="Image">
+                        <div class="media-body mg-t-2">
+                          <h6 class="mg-b-5 tx-14"><a href="" class="tx-inverse">{{ article.author }}</a></h6>
+                          <div class="tx-12">{{ article.created_at }}</div>
+                        </div>
+                      </div>
+                     <a href="{% url 'detail_articles' article.id %}"> <p>{{ article.subject }}</p></a>
+                      <a href="{% url 'detail_articles' article.id %}"><img src="{{ article.picture.url }}" class="img-fluid mg-b-25" alt=""></a>
+                      <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="{% url 'detail_articles' article.id %}" class="tx-inverse hover-info">{{ article.snippet }}</a></h5>
+                      <p class="mg-b-0 tx-13">
+                      <a href="" class="tx-info">18 Likes</a>
+                      <a href="" class="tx-info mg-l-20"> 2 Comments{{comments.count}}</a>
+                      <a href="" class="tx-info mg-l-20"> 2 Views</a>
+
+                      </p>
+                  </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+    {% elif url_name == 'ce' %}
+      <div class="row mg-t-30">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 br-section-wrapper">
+            <h3 class="text-center">College of Education</h3>
+            <div class="row ">
+            {% for article in articles_ce %}
+
+                <div class="col-lg-3 mg-t-20 mg-lg-t-0">
+                  <div class="card shadow-base bd-0 pd-25 ht-100p">
+                      <div class="media mg-b-15">
+                        <img src="{{ article.author.profile.image.url }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="Image">
+                        <div class="media-body mg-t-2">
+                          <h6 class="mg-b-5 tx-14"><a href="" class="tx-inverse">{{ article.author }}</a></h6>
+                          <div class="tx-12">{{ article.created_at }}</div>
+                        </div>
+                      </div>
+                     <a href="{% url 'detail_articles' article.id %}"> <p>{{ article.subject }}</p></a>
+                      <a href="{% url 'detail_articles' article.id %}"><img src="{{ article.picture.url }}" class="img-fluid mg-b-25" alt=""></a>
+                      <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="{% url 'detail_articles' article.id %}" class="tx-inverse hover-info">{{ article.snippet }}</a></h5>
+                      <p class="mg-b-0 tx-13">
+                      <a href="" class="tx-info">18 Likes</a>
+                      <a href="" class="tx-info mg-l-20"> 2 Comments{{comments.count}}</a>
+                      <a href="" class="tx-info mg-l-20"> 2 Views</a>
+
+                      </p>
+                  </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+
+ {% elif url_name == 'cass' %}
+      <div class="row mg-t-30">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 br-section-wrapper">
+            <h3 class="text-center">College of Arts and Social Sciences</h3>
+            <div class="row ">
+            {% for article in articles_cass %}
+                <div class="col-lg-3 mg-t-20 mg-lg-t-0">
+                  <div class="card shadow-base bd-0 pd-25 ht-100p">
+                      <div class="media mg-b-15">
+                        <img src="{{ article.author.profile.image.url }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="Image">
+                        <div class="media-body mg-t-2">
+                          <h6 class="mg-b-5 tx-14"><a href="" class="tx-inverse">{{ article.author }}</a></h6>
+                          <div class="tx-12">{{ article.created_at }}</div>
+                        </div>
+                      </div>
+                     <a href="{% url 'detail_articles' article.id %}"> <p>{{ article.subject }}</p></a>
+                      <a href="{% url 'detail_articles' article.id %}"><img src="{{ article.picture.url }}" class="img-fluid mg-b-25" alt=""></a>
+                      <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="{% url 'detail_articles' article.id %}" class="tx-inverse hover-info">{{ article.snippet }}</a></h5>
+                      <p class="mg-b-0 tx-13">
+                      <a href="" class="tx-info">18 Likes</a>
+                      <a href="" class="tx-info mg-l-20"> 2 Comments{{comments.count}}</a>
+                      <a href="" class="tx-info mg-l-20"> 2 Views</a>
+
+                      </p>
+                  </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+    {% elif url_name == 'cavm' %}
+      <div class="row mg-t-30">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 br-section-wrapper">
+            <h3 class="text-center">College of Agriculture and Veterinary Medecine</h3>
+            <div class="row ">
+            {% for article in articles_cavm %}
+
+                <div class="col-lg-3 mg-t-20 mg-lg-t-0">
+                  <div class="card shadow-base bd-0 pd-25 ht-100p">
+                      <div class="media mg-b-15">
+                        <img src="{{ article.author.profile.image.url }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="Image">
+                        <div class="media-body mg-t-2">
+                          <h6 class="mg-b-5 tx-14"><a href="" class="tx-inverse">{{ article.author }}</a></h6>
+                          <div class="tx-12">{{ article.created_at }}</div>
+                        </div>
+                      </div>
+                     <a href="{% url 'detail_articles' article.id %}"> <p>{{ article.subject }}</p></a>
+                      <a href="{% url 'detail_articles' article.id %}"><img src="{{ article.picture.url }}" class="img-fluid mg-b-25" alt=""></a>
+                      <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="{% url 'detail_articles' article.id %}" class="tx-inverse hover-info">{{ article.snippet }}</a></h5>
+                      <p class="mg-b-0 tx-13">
+                      <a href="" class="tx-info">18 Likes</a>
+                      <a href="" class="tx-info mg-l-20"> 2 Comments{{comments.count}}</a>
+                      <a href="" class="tx-info mg-l-20"> 2 Views</a>
+
+                      </p>
+                  </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+    {% elif url_name == 'cmhs' %}
+      <div class="row mg-t-30">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 br-section-wrapper">
+            <h3 class="text-center">College of Medecine and Health Sciences</h3>
+            <div class="row ">
+            {% for article in articles_cmhs %}
+
+                <div class="col-lg-3 mg-t-20 mg-lg-t-0">
+                  <div class="card shadow-base bd-0 pd-25 ht-100p">
+                      <div class="media mg-b-15">
+                        <img src="{{ article.author.profile.image.url }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="Image">
+                        <div class="media-body mg-t-2">
+                          <h6 class="mg-b-5 tx-14"><a href="" class="tx-inverse">{{ article.author }}</a></h6>
+                          <div class="tx-12">{{ article.created_at }}</div>
+                        </div>
+                      </div>
+                     <a href="{% url 'detail_articles' article.id %}"> <p>{{ article.subject }}</p></a>
+                      <a href="{% url 'detail_articles' article.id %}"><img src="{{ article.picture.url }}" class="img-fluid mg-b-25" alt=""></a>
+                      <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="{% url 'detail_articles' article.id %}" class="tx-inverse hover-info">{{ article.snippet }}</a></h5>
+                      <p class="mg-b-0 tx-13">
+                      <a href="" class="tx-info">18 Likes</a>
+                      <a href="" class="tx-info mg-l-20"> 2 Comments{{comments.count}}</a>
+                      <a href="" class="tx-info mg-l-20"> 2 Views</a>
+
+                      </p>
+                  </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+    {% endif %}
+{% endwith %}
+{% endblock  %}
+    

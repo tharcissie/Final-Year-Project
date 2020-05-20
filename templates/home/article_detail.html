@@ -1,0 +1,140 @@
+{% extends 'my_base.html' %}
+{% load socialaccount%}
+{% load humanize %}
+{% load static %}
+{% block content %}
+{% comment %} 
+{% providers_media_js %}
+
+<style>
+.replies{
+    display:none;
+}
+
+</style> {% endcomment %}
+
+
+
+    <div class="row  mg-t-80">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 br-section-wrapper">
+            <h3 class="text-center mg-t-10 tx-inverse"> <b>{{object.subject}}</b></h3>
+            <div class="pd-x-30 mg-t-60 tx-inverse">
+
+                {{object.message|safe}}
+
+
+    <p class="tx-13 mg-t-20">
+    <a class="mg-r-50 tx-15 tx-semibold">Published by : <img src="{{ object.author.profile.image.url }}" class="wd-25 rounded-circle mg-l-10" alt="Image">
+            <span class="tx-15 tx-semibold">{{object.author.username}}</span> </a><a class="tx-15 tx-semibold">{{object.created_at|naturaltime}}</a>
+    </p>
+
+        {% if user.is_authenticated %}
+            <p class="tx-13 mg-t-20">
+                <a class="tx-info mg-l-5"><a class="mg-t-20"> <i class="far fa-comment tx-20"></i> {{ comments.count }} </a></a>
+                <a class="tx-info mg-l-30 "><a  href="{{ object.get_like_url}}"> <i class="fa fa-heart tx-30" aria-hidden="true"></i></a>{{  object.likes.count }}</a>
+            </p>
+        {% else %}
+
+            <p class="tx-13 mg-t-20">
+                <a class="tx-info mg-l-5"><a class="mg-t-20"> <i class="far fa-comment tx-20"></i> {{ comments.count }}</a></a>
+                
+                <a onclick="myFunction2()" class="tx-info mg-l-30 "><i class="fa fa-heart tx-30" aria-hidden="true"></i>{{  object.likes.count }}</a>
+            </p>
+
+<!--             
+              <a href="{% provider_login_url "google" %}?next={{ request.get_full_path }}"
+              style="color:white; 
+              background-color: #dd4b39; 
+              border-radius: 4px;
+              display: inline-block;
+              font-size: 17px;
+              text-decoration: none;">
+              <i class="fa fa-google fa-fw"></i> Login with Google+
+              </a> -->
+
+        
+           
+
+        {% endif %}
+
+
+        <h4 class="mt-4">Leave a comment</h4>
+        <div class="main-comment-section">
+            <div class="container-fluid mt-2">
+                <div class="form-group row">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ comment_form.as_p }}
+                        {% if user.is_authenticated %}
+                        <button type="submit" value="Send" class="btn btn-info ">Submit</button>
+                        {% else %}
+                        <button onclick="myFunction()"  class="btn btn-info ">Submit</button>
+                     {% endif %}
+                    </form>
+                </div>
+            </div>
+            <h5 class="mg-t-50">Comments :</h5>
+            {% for comment in comments %}
+                <div class="media mg-t-20 mg-b-10">
+                    <img src="{{ comment.user.profile.image.url }}" class="wd-25 rounded-circle mg-r-20" alt="">
+                    <div class="media-body tx-12">
+                      <div class="chat-1">
+                       {{ comment.content }}
+                      </div>
+                     
+                    <footer class="blockquote-footer">commented by : <cite title="Source Title">{{ comment.user.username|capfirst }}</cite>
+                        <span class="chat-time">3:20pm</span>
+                      </div>
+                    </div>
+                    {% if user.is_authenticated %}
+                    <button id="reply_btn" class="btn btn-info">Reply</button>
+                    {% else %}
+                    
+                    <button onclick="myFunction3()" id="reply_btn" class="btn btn-info">Reply</button>
+                    {% endif %}
+    <!--------------- Section for repling comments -------------->
+    
+                <div id="all_replies" class="replied-comments container mt-2 ml-5 replies d-none">
+                    {% for reply in comment.replies.all %}
+
+                    <div class="media mg-t-20 mg-b-20">
+                        <img src="{{ comment.user.profile.image.url }}" class="wd-25 rounded-circle mg-r-20" alt="">
+                        <div class="media-body tx-12">
+                        <div class="chat-1">
+                        {{ reply.content }}
+                        </div>
+                        
+                        <footer class="blockquote-footer">replied by : <cite title="Source Title">{{ reply.user.username|capfirst }}</cite>
+                            <span class="chat-time">3:20pm</span>
+                        </div>
+                    </div>
+                       
+                    {% endfor %}
+                    <div class="form-group  row" id="replied">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                            {{ comment_form.as_p }}
+                            {% if user.is_authenticated%}
+                            <input type="submit" value="Reply" class="btn btn-outline-success">
+                            {% else %}
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+  
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+
+    </div>
+
+    <script >function myFunction(){alert('Login to comment');}</script>
+    <script >function myFunction2(){alert('Login to like');}</script>
+    <script >function myFunction3(){alert('Login to reply');}</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% endblock  %}

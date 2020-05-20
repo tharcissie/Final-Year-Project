@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+dj-database-url = "*"
+django-widget-tweaks = "*"
+django-userforeignkey = "*"
+django-ckeditor = "*"
+django-taggit = "*"
+django-crispy-forms = "*"
+django-filter = "*"
+filters = "*"
+django-allauth = "*"
+whitenoise = "*"
+pillow = "*"
+gunicorn = "*"
+psycopg2-binary = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"

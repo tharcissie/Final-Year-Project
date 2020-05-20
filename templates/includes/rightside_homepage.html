@@ -1,0 +1,71 @@
+          {% load crispy_forms_tags %}
+  
+          <ul class="list-group mg-b-20">
+            <a href="{% url 'cst' %}">
+            <li class="list-group-item rounded-top-0">
+              <p class="mg-b-0"><strong class="tx-inverse tx-medium">College of Science and Technology</p>
+            </li>
+            </a>
+            <a href="{% url 'cbe' %}">
+            <li class="list-group-item">
+              <p class="mg-b-0"><strong class="tx-inverse tx-medium">College of Business and Economics</p>
+            </li>
+            </a>
+            <a href="{% url 'ce' %}">
+            <li class="list-group-item rounded-top-0">
+              <p class="mg-b-0"><strong class="tx-inverse tx-medium">College of Education</p>
+            </li>
+            </a>
+            <a href="{% url 'cmhs' %}">
+            <li class="list-group-item">
+              <p class="mg-b-0"><strong class="tx-inverse tx-medium">College of Medecine and Health</p>
+            </li>
+            </a>
+            <a href="{% url 'cass' %}">
+            <li class="list-group-item rounded-top-0">
+              <p class="mg-b-0"><strong class="tx-inverse tx-medium">College of Art and Social Sciences</p>
+            </li>
+            </a>
+            <a href="{% url 'cavm' %}">
+            <li class="list-group-item">
+              <p class="mg-b-0"><strong class="tx-inverse tx-medium">College of Agriculture and Veterinary</p>
+            </li>
+            </a>
+          </ul> 
+          <h4 class="mg-t-20 text-center">Announcements</h4>
+                    
+            <div class="card shadow-base widget-5">
+              <div class="list-group list-group-flush">
+              {% for announcement in announcements %}
+                <a href="{% url 'announcement_details' announcement.id %}" class="list-group-item list-group-item-action media">
+                  <div class="media-body">
+                    <div class="msg-top">
+                      <span class="tx-inverse">{{announcement.title}}</span>
+                    </div>
+                    <p class="msg-summary">{{announcement.snippet|safe}}</p>
+                  </div>
+                </a>
+              {% endfor %}
+              </div>
+          </div>
+
+          <h4 class="mg-t-20 text-center">Subscribe</h4>
+          <div class="form-layout form-layout-1 mg-t-10">
+            <form method="POST">
+            {% csrf_token %}
+
+              <div class="form-group">
+              <label class="form-control-label">Email</label>
+                {{form.email}}
+              </div>
+              <div class="form-group">
+              <label class="form-control-label">College</label>
+              <div class="col-5">
+                {{form.article_category}}
+              </div>
+              </div>
+            <button class="btn btn-info">Subscribe</button>
+          </form>
+        </div>
+
+
