@@ -5,21 +5,8 @@ name = "pypi"
 
 [packages]
 django = "*"
-dj-database-url = "*"
-django-widget-tweaks = "*"
-django-userforeignkey = "*"
-django-ckeditor = "*"
-django-taggit = "*"
-django-crispy-forms = "*"
-django-filter = "*"
-filters = "*"
-django-allauth = "*"
-whitenoise = "*"
-pillow = "*"
-gunicorn = "*"
-psycopg2-binary = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
