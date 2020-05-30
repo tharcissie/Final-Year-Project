@@ -6,6 +6,18 @@ name = "pypi"
 [packages]
 django = "*"
 dj-database-url = "*"
+django-widget-tweaks = "*"
+django-userforeignkey = "*"
+django-ckeditor = "*"
+django-taggit = "*"
+django-crispy-forms = "*"
+filters = "*"
+django-allauth = "*"
+whitenoise = "*"
+django-filter = "*"
+pillow = "*"
+gunicorn = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
