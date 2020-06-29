@@ -1,8 +1,7 @@
-/* #id_email{
+.subs-email #id_email{
     width: 250px;
     height: 35px;
-} */
-
+}
 #id_article_category{
     margin-left: -15px;
     width: 250px;
