@@ -36,11 +36,7 @@ DEBUG = True
 
 
 
-<<<<<<< HEAD
 ALLOWED_HOSTS = []
-=======
-ALLOWED_HOSTS = ['ur-articles.herokuapp.com']
->>>>>>> 6b9e5612527034d05778df1cb9b655a46b1f91c5
 # 'ur-articles.herokuapp.com'
 
 
@@ -65,10 +61,7 @@ INSTALLED_APPS = [
     'taggit',# for tagging
     'crispy_forms', # for crispy forms
     'filters',
-<<<<<<< HEAD
     'rest_framework',
-=======
->>>>>>> 6b9e5612527034d05778df1cb9b655a46b1f91c5
 
 
     #for logging in with social accounts
@@ -151,7 +144,6 @@ WSGI_APPLICATION = 'rootFolder.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-<<<<<<< HEAD
 # DATABASES = {
 #     'default': dj_database_url.config()
 # }
@@ -163,19 +155,6 @@ DATABASES = {
      }
  }
 
-=======
-DATABASES = {
-    'default': dj_database_url.config()
-}
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
->>>>>>> 6b9e5612527034d05778df1cb9b655a46b1f91c5
 
 
 # Password validation
