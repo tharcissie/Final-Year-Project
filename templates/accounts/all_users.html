@@ -1,0 +1,37 @@
+{% extends "base_account.html" %}
+{% load humanize %}
+
+
+{% block content %}
+<div class="br-section-wrapper mg-t-100">
+
+<div class="bd rounded table-responsive">
+    <table class="table table-bordered mg-b-0">
+      <thead>
+        <tr>
+          <th>Profil</th>
+          <th>UserName</th>
+          <th>Email</th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+          {% for user in all_users %}
+          <tr>
+            <td><img src="{{user.profile.image.url}}" alt="" class="wd-40 rounded-circle ml-4"></td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+
+
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+
+
+     

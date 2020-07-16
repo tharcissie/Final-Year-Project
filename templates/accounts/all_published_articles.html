@@ -1,0 +1,63 @@
+{% extends "base_account.html" %}
+{% load humanize %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<style>
+.input-group #id_college{
+  width: 250px;
+  padding: 11px;
+  margin-right: 15px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.btn-info{
+  height: 1.1cm;
+}
+</style>
+
+<div class="br-section-wrapper mg-t-100">
+
+   <div class="row">
+        <div class="card mx-auto">
+          <div class="card-body">
+            <form method="get">
+              <div class="input-group">
+              {{ all_articles.form.as_p }}
+              <button class="btn btn-info max-auto" type="submit">Go</button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+
+<div class="bd rounded table-responsive mg-t-50">
+    <table class="table table-bordered mg-b-0">
+      <thead>
+        <tr>
+          <th>subject</th>
+          <th>message</th>
+          <th>college</th>
+          <th>author</th>
+          <th>Published time</th>
+
+        </tr>
+      </thead>
+      <tbody>
+          {% for article in all_articles.qs %}
+          <tr>
+            <td><a href="{% url 'article_details' article.id %}"> {{article.subject}}</a></td>
+            <td>{{article.snippet|safe}}</td>
+            <td>{{article.college}}</td>
+            <td>{{article.author}}</td>
+            <td>{{article.created_at|naturaltime}}</td>
+
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+

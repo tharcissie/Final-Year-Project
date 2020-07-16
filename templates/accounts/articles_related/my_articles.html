@@ -1,0 +1,52 @@
+{% extends 'base_account.html' %}
+
+{% block content %}
+    <div class="br-section-wrapper mg-t-100">
+        <div class="br-pagebody pd-x-20 pd-sm-x-30 mx-wd-1350">
+            <div class="row card-deck card-deck-sm  mg-x-0">
+                {% for article in  my_articles %}
+
+                <div class="col-lg-4 mg-t-10 mg-lg-t-0 mg-b-20">
+                    <div class="card shadow-base bd-0 pd-25 ht-100p">
+                        <div class="media mg-b-15">
+                          <img src="{{ article.author.profile.image.url }}" class="d-flex wd-40 rounded-circle mg-r-15" alt="Image">
+                          <div class="media-body mg-t-2">
+                            <h6 class="mg-b-5 tx-14"><a href="" class="tx-inverse">{{ article.author }}</a></h6>
+                            <div class="tx-12">{{ article.created_at }}</div>
+                          </div>
+                        </div>
+                       <a href="{% url 'article_details' article.id %}"> <p>{{ article.topic }}</p></a>
+                        <a href="{% url 'article_details' article.id %}"><img src="{{ article.picture.url }}" class="img-fluid mg-b-25" alt=""></a>
+                        <h5 class="tx-normal tx-roboto mg-b-15 lh-4"><a href="{% url 'article_details' article.id %}" class="tx-inverse hover-info">{{ article.snippet|safe}}</a></h5>
+                        <p class="mg-b-0 tx-13">
+                        <a href="{% url 'edit_article' article.id %}" class="tx-info mg-l-20">Edit</a>
+                        <a href="{% url 'delete_article' article.id %}" class="tx-info mg-l-20">Delete</a>
+                        </p>
+                    </div>
+                  </div>
+                {% endfor %}
+          </div>
+        </div>
+    </div>
+{% endblock  %}
+
+
+
+
+
+
+<!-- 
+<div class=" col-lg-4 card bd-0 bg-info">
+    <div class="card-body pd-25">
+    <p class="tx-11 tx-uppercase tx-mont tx-semibold tx-white-8">{{ article.subject }}</p>
+    <h5 class="lh-3 tx-normal tx-roboto"><a href="{% url 'article_details' article.id %}" class="tx-white-8 hover-white">{{ article.snippet|safe }}</a></h5>
+    <p class="tx-12 mg-b-0 tx-white-7">{{ article.created_at }}</p>
+    </div>
+    <div class="card-footer bg-transparent bd-t-0 pd-x-25 pd-b-25">
+    <a href="" class="d-block hover-white-8 tx-white">{{ article.author }}</a>
+    <span class="tx-12 tx-white-8">From which college</span>
+    </div>
+    <div class="card-footer mg-l-60 bg-transparent bd-t-0 pd-x-25 pd-b-25">
+    
+    </div>
+</div> -->

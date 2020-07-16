@@ -1,0 +1,85 @@
+    <div class="br-sideleft sideleft-scrollbar">
+      <label class="sidebar-label pd-x-10 mg-t-20 op-3"></label>
+
+  
+      <ul class="br-sideleft-menu">
+        {% if request.user.is_superuser %}
+            <li class="br-menu-item">
+              <a href="{% url 'my_dashboard' %}" class="br-menu-link active">
+                <i class="menu-item-icon icon ion-ios-home-outline tx-24"></i>
+                <span class="menu-item-label">Dashboard</span>
+              </a>
+            </li>
+            <li class="br-menu-item">
+              <a href="{% url 'homepage' %}" class="br-menu-link">
+                <i class="icon ion-eye tx-22"></i>
+                <span class="menu-item-label">View Homepage</span>
+              </a>
+            </li>
+            <li class="br-menu-item">
+              <a href="#" class="br-menu-link with-sub">
+                <i class="fa fa-map tx-22"></i>
+                <span class="menu-item-label">Announcement</span>
+              </a>
+              <ul class="br-menu-sub">
+                <li class="sub-item"><a href="{% url 'new_announcement' %}" class="sub-link">New Announcement</a></li>
+                <li class="sub-item"><a href="{% url 'all_announcements' %}" class="sub-link">Published Announcements</a></li>
+              </ul>
+            </li>
+            <li class="br-menu-item">
+              <a href="{% url 'all_published_articles' %}" class="br-menu-link">
+                <i class="fa fa-file-alt tx-22"></i>
+                <span class="menu-item-label">Published Articles</span>
+              </a>
+            </li>
+            <li class="br-menu-item">
+              <a href="{% url 'all_users' %}" class="br-menu-link">
+                <i class="icon ion-person tx-22"></i>
+                <span class="menu-item-label">Total Users</span>
+              </a>
+            </li>
+            <li class="br-menu-item">
+              <a href="{% url 'all_subscribers' %}" class="br-menu-link">
+                <i class="icon ion-person-stalker tx-22"></i>
+                <span class="menu-item-label">Total Subscribers</span>
+              </a>
+            </li>
+        {% else %}
+            <li class="br-menu-item">
+              <a href="{% url 'my_dashboard' %}" class="br-menu-link active">
+                <i class="menu-item-icon icon ion-ios-home-outline tx-24"></i>
+                <span class="menu-item-label">Dashboard</span>
+              </a>
+            </li>
+            <li class="br-menu-item">
+              <a href="{% url 'homepage' %}" class="br-menu-link">
+                <i class="icon ion-eye tx-22"></i>
+                <span class="menu-item-label">View Homepage</span>
+              </a>
+            </li>
+            <li class="br-menu-item">
+              <a href="{% url 'create_article' %}" class="br-menu-link">
+                <i class="menu-item-icon icon ion-compose tx-22"></i>
+                <span class="menu-item-label">Write Article</span>
+              </a>
+            </li>
+            <li class="br-menu-item">
+              <a href="{% url 'my_articles' %}" class="br-menu-link">
+                <i class="menu-item-icon icon ion-ios-list-outline tx-22"></i>
+                <span class="menu-item-label">View all Articles</span>
+              </a>
+            </li>
+            <li class="br-menu-item">
+              <a href="#" class="br-menu-link with-sub">
+                <i class="menu-item-icon icon ion-gear-b tx-22"></i>
+                <span class="menu-item-label">Settings</span>
+              </a>
+              <ul class="br-menu-sub">
+                <li class="sub-item"><a href="{% url 'change_password' %}" class="sub-link">Change Password</a></li>
+                <li class="sub-item"><a href="{% url 'update_profile' %}" class="sub-link">Edit Profile</a></li>
+              </ul>
+            </li>
+        {% endif %}
+      </ul>
+ 
+    </div><!-- br-sideleft -->

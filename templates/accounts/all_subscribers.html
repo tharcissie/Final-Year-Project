@@ -1,0 +1,61 @@
+{% extends "base_account.html" %}
+{% load humanize %}
+
+
+{% block content %}
+
+<style>
+  .input-group #id_article_category{
+    width: 250px;
+    padding: 11px;
+    margin-right: 15px;
+    background-color: #fff;
+    border-radius: 4px;
+  }
+  .btn-info{
+    height: 1.1cm;
+  }
+  </style>
+
+<div class="br-section-wrapper mg-t-100">
+
+    <div class="row">
+        <div class="card mx-auto">
+          <div class="card-body">
+            <form method="get">
+              <div class="input-group">
+              {{ subscribers.form.as_p }}
+                <button class="btn btn-info mx-auto" type="submit">Go</button>
+              </div>
+            </form>
+        </div>
+    </div>
+    </div>
+<div class="bd rounded table-responsive mg-t-50">
+    <table class="table table-bordered mg-b-0">
+      <thead>
+        <tr>
+          <th>email</th>
+          <th>subscribed college</th>
+          <th>subscription date</th>
+
+        </tr>
+      </thead>
+      <tbody>
+          {% for subscriber in subscribers.qs %}
+          <tr>
+            <td>{{subscriber.email}}</td>
+            <td>{{subscriber.article_category}}</td>
+            <td>{{subscriber.subscription_date|naturaltime}}</td>
+
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+
+
+     

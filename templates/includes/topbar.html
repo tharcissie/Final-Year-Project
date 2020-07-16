@@ -1,0 +1,61 @@
+    <div class="br-header">
+      <div class="br-header-left">
+        <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
+        <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
+
+      </div>
+
+      <div class="br-header-right">
+        <nav class="nav">
+
+          <div class="dropdown">
+            <a href="" class="nav-link pd-x-7 pos-relative" data-toggle="dropdown">
+              <i class="icon ion-ios-bell-outline tx-24"></i>
+              <span class="square-8 bg-danger pos-absolute t-15 r-5 rounded-circle"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-header">
+              <div class="dropdown-menu-label">
+                <label>New Articles</label>
+              </div>
+
+              <div class="media-list">
+                  {% for notification in notifications  %}
+                    <a href="" class="media-list-link read">
+                      <div class="media">
+                        <img src="{{notification.author.profile.image.url }}" alt="author-pic">
+                        <div class="media-body">
+                          <p class="noti-text"><strong>{{notification.author}}</strong></p>
+                            <p>{{notification.noti}}</p> 
+                          <span>{{notification.created_at}}</span>
+                        </div>
+                      </div>
+                    </a>
+                  {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
+              <span class="logged-name hidden-md-down">{{ user.username }}</span>
+              <img src="{{ user.profile.image.url }}" class="wd-32 rounded-circle" alt="">
+              <span class="square-10 bg-success"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-header wd-250">
+              <div class="tx-center">
+                <a href=""><img src="{{ user.profile.image.url }}" class="wd-80 rounded-circle" alt=""></a>
+                <h6 class="logged-fullname">{{ user.first_name}} {{ user.last_name}} </h6>
+                <p>{{ user.email }}</p>
+              </div>
+              <hr>
+              <ul class="list-unstyled user-profile-nav">
+                <li><a href="{% url 'update_profile' %}"><i class="icon ion-ios-person"></i> Edit Profile</a></li>
+                <li><a href="{% url 'change_password' %}"><i class="icon ion-ios-download"></i> Change Password</a></li>
+                <li><a href="{% url 'logout' %}"><i class="icon ion-power"></i> Sign Out</a></li>
+              </ul>
+            </div>
+
+          </div>
+        </nav>
+
+      </div>
+    </div>

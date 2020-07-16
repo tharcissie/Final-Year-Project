@@ -1,0 +1,27 @@
+{% extends "base_account.html" %}
+
+{% block content %}
+<div class="br-section-wrapper mg-t-100">
+
+<div class="bd rounded table-responsive">
+    <table class="table table-bordered mg-b-0">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Content</th>
+          <th>Published time</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for announcement in all_announcements %}
+          <tr>
+            <td><a href="{% url 'announcement_detail' announcement.id %}">{{announcement.title}}</a></td>
+            <td>{{announcement.short|safe}}</td>
+            <td>{{announcement.published_date}}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

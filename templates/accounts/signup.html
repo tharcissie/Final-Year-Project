@@ -1,0 +1,84 @@
+{% extends 'my_base.html' %}
+{% load socialaccount%}
+{% load static %}
+{% providers_media_js %}
+
+{% block content %}
+  <div class="container">
+    <h1 class="text-center logo my-4">
+      UR IDEAS BOARD
+    </h1>
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-10 col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Sign up</h3>
+            <form method="post" novalidate>
+              {% csrf_token %}
+              {% include 'includes/form.html' %}
+              <button type="submit" class="btn btn-primary btn-block" style="font-size: 17px;">Create an account</button>
+            </form>
+         <hr>
+         
+         <a href="{% provider_login_url "google" %}?next={{ request.get_full_path }}" class="btn "
+            style="color:white; 
+            background-color: #dd4b39; 
+            width: 100%;
+            border-radius: 4px;
+            margin: 5px 0;
+            opacity: 0.85;
+            font-size: 17px;
+            line-height: 20px;">
+            <i class="fa fa-google fa-fw"></i> Login with Google+
+            </a>
+        </div>
+ 
+
+          </div>
+          <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+              <button class="btn-open" onclick="document.getElementById('id01').style.display='block'">Rules and regulations</button>
+
+            </div>
+
+            <div class="col-lg-3"></div>
+
+          </div>
+
+
+          <div class="card-footer text-muted text-center">
+            Already have an account? <a href="{% url 'login' %}">Log in</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close">&times;</span>
+    
+    <div class="container mg-t-100">
+      <div class="card widget-18 shadow-base mg-t-20">
+        <div class="wt-content">
+          <div class="wt-content-item">
+            <h1 class="wt-title">Rules &amp; Regulations</h1>
+            <p class="mg-b-30">Find and experience great places to stay, Find and experience great places to stay,
+              Find and experience great places to stay, Find and experience great places to stay,
+              Find and experience great places to stay, Find and experience great places to stay,
+              Find and experience great places to stay, Find and experience great places to stay,
+              dine, drink and shop near you.</p>
+ 
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+

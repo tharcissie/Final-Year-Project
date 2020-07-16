@@ -1,0 +1,234 @@
+{% extends 'base_account.html' %}
+
+{% block content %}
+        <div class="mg-t-80">
+          <div class="row">
+            <div class="card mx-auto">
+              <div class="card-body">
+              <h5 id="date"> </h5>
+            </div>
+          </div>
+          </div>
+
+        </div>
+        <div class="row row-sm mg-t-50">
+          {% if request.user.is_superuser %}
+              <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
+                <div class="bg-primary rounded overflow-hidden">
+                  <div class="pd-x-20 pd-t-20 d-flex align-items-center">
+                    <i class="icon ion-person-stalker tx-60 lh-0 tx-white op-7"></i>
+                    <div class="mg-l-20">
+                      <p class="tx-12 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Subscribers</p>
+                      <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">{{subscribers}}</p>
+                    </div>
+                  </div>
+                  <div id="ch4" class="ht-50 tr-y-1"></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
+                <div class="bg-info rounded overflow-hidden">
+                  <div class="pd-x-20 pd-t-20 d-flex align-items-center">
+                    <i class="fa fa-file-alt tx-60 lh-0 tx-white op-7"></i>
+                    <div class="mg-l-20">
+                      <p class="tx-12 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Articles</p>
+                      <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">{{total_Articles}}</p>
+                    </div>
+                  </div>
+                  <div id="ch4" class="ht-50 tr-y-1"></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
+                <div class="bg-danger rounded overflow-hidden">
+                  <div class="pd-x-20 pd-t-20 d-flex align-items-center">
+                    <i class="fa fa-map tx-60 lh-0 tx-white op-7"></i>
+                    <div class="mg-l-20">
+                      <p class="tx-12 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Announcements</p>
+                      <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">{{announcements}}</p>
+                    </div>
+                  </div>
+                  <div id="ch4" class="ht-50 tr-y-1"></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
+                <div class="bg-teal rounded overflow-hidden">
+                  <div class="pd-x-20 pd-t-20 d-flex align-items-center">
+                    <i class="icon ion-person tx-60 lh-0 tx-white op-7"></i>
+                    <div class="mg-l-20">
+                      <p class="tx-12 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Total users</p>
+                      <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">{{total_users}}</p>
+                    </div>
+                  </div>
+                  <div id="ch4" class="ht-50 tr-y-1"></div>
+                </div>
+              </div>
+          {% else %}
+              <div class="col-sm-6 col-xl-3">
+                <div class="bg-info rounded overflow-hidden">
+                  <div class="pd-x-20 pd-t-20 d-flex align-items-center">
+                    <i class="fa fa-server tx-60 lh-0 tx-white op-7"></i>
+                    <div class="mg-l-20">
+                      <p class="tx-10 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Total Articles</p>
+                      <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">{{total_articles}}</p>
+                    </div>
+                  </div>
+                  <div id="ch1" class="ht-50 tr-y-1"></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3 mg-t-20 mg-sm-t-0">
+                <div class="bg-purple rounded overflow-hidden">
+                  <div class="pd-x-20 pd-t-20 d-flex align-items-center">
+                    <i class="icon ion-compose tx-60 lh-0 tx-white op-7"></i>
+                    <div class="mg-l-20">
+                      <p class="tx-10 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Most commented Articles</p>
+                      <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">29</p>
+                    </div>
+                  </div>
+                  <div id="ch3" class="ht-50 tr-y-1"></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
+                <div class="bg-teal rounded overflow-hidden">
+                  <div class="pd-x-20 pd-t-20 d-flex align-items-center">
+                    <i class="icon ion-heart tx-60 lh-0 tx-white op-7"></i>
+                    {% for article in articles_likes %}
+                    <div class="mg-l-20">
+                      <p class="tx-10 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Most liked Articles</p>
+                            <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">{{article.likes.count}}</p>
+                    </div>
+                    {% endfor %}
+                  </div>
+                  <div id="ch2" class="ht-50 tr-y-1"></div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
+                <div class="bg-primary rounded overflow-hidden">
+                  <div class="pd-x-20 pd-t-20 d-flex align-items-center">
+                    <i class="fa fa-eye tx-60 lh-0 tx-white op-7"></i>
+                    <div class="mg-l-20">
+                      <p class="tx-10 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Most Viewed Articles</p>
+                      <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">32</p>
+                    </div>
+                  </div>
+                  <div id="ch4" class="ht-50 tr-y-1"></div>
+                </div>
+              </div>
+          {% endif %}
+        
+        </div>
+
+     <div class="br-section-wrapper mg-t-30">
+          <div class="row">
+
+            <div class="col-xl-6 mg-t-20 mg-xl-t-0">
+              <h5>Number of articles in each college</h5>
+              <div class="bd pd-l-20 pd-y-30 pd-r-30">
+                <canvas id="myChart" width="400" height="400"></canvas>
+
+              </div>
+            </div>
+            <div class="col-xl-6 mg-t-20 mg-xl-t-0">
+              <h5>Number of subscribers in each college</h5>
+              <div class="bd pd-l-20 pd-y-30 pd-r-30">
+                <canvas id="myChart2" width="400" height="400"></canvas>
+              </div>
+            </div>
+          </div>
+
+
+    </div>
+<script>
+      let showDate = function(message){
+        document.getElementById('date').textContent = message 
+    }
+    let date = new Date();
+    showDate(date.toDateString()); 
+</script>
+
+<script>
+
+  var endpoint ='/api/chart/data/'
+  var defaultData=[]
+  var labels = [];
+  $.ajax({
+    method:"GET",
+    url:endpoint,
+    success:function(data){
+      labels = data.labels
+      defaultData = data.default 
+      var ctx = document.getElementById('myChart');
+      var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: labels,
+          datasets: [{
+              label: '',
+              data:defaultData,
+              backgroundColor: [
+              'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(25, 206, 0, 1)',
+          'rgba(75, 19, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+              
+          ],
+      borderWidth: 1
+          }]
+        }
+      })
+      
+    },
+    error:function(error_data){
+      console.log("error")
+      console.log(error_data)
+  
+    }
+  })  
+
+</script>
+
+
+<script>
+
+  var endpoint ='/api2/chart/data/'
+  var defaultdata=[]
+  var label = [];
+  $.ajax({
+    method:"GET",
+    url:endpoint,
+    success:function(data){
+      labels = data.label
+      defaultdata = data.defaultdata 
+      var ctx = document.getElementById('myChart2');
+      var myChart = new Chart(ctx, {
+      type: 'polarArea',
+      data: {
+          labels: labels,
+          datasets: [{
+              label: '',
+              data:defaultdata,
+              backgroundColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(25, 206, 0, 1)',
+          'rgba(75, 19, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+          }]
+        }
+      })
+      
+    },
+    error:function(error_data){
+      console.log("error")
+      console.log(error_data)
+  
+    }
+  })  
+
+</script>
+
+{% endblock  %}
+
