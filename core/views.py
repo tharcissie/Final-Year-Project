@@ -14,6 +14,11 @@ from django.core.mail import send_mail
 from rootFolder.settings import EMAIL_HOST_USER
 from django.db.models import Q
 
+from django.http import JsonResponse
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+
 
 
 
@@ -129,3 +134,44 @@ def new_article(request):
 
     template_name = 'core/new.html'
     return render (request, template_name)
+
+class ChartData(APIView):
+    authenticatication_classes=[]
+    permision_classes=[]
+
+    def get(self, request, format=None):
+        cst =  Article.objects.filter(college__name='CST').count()
+        cbe =  Article.objects.filter(college__name='CBE').count()
+        cmhs =  Article.objects.filter(college__name='CMHS').count()
+        ce =  Article.objects.filter(college__name='CE').count()
+        cass =  Article.objects.filter(college__name='CASS').count()
+        cavm =  Article.objects.filter(college__name='CAVM').count()
+        labels = ["CST","CBE","CMHS","CE","CASS","CAVM"]
+        default_items = [cst, cbe, cmhs, ce, cass, cavm]
+        data = {
+            "labels":labels,
+            "default":default_items
+
+        }
+        return Response(data)
+
+class ChartData_(APIView):
+    authenticatication_classes=[]
+    permision_classes=[]
+
+    def get(self, request, format=None):
+        cst =  Subscriber.objects.filter(article_category__name='CST').count()
+        cbe = Subscriber.objects.filter(article_category__name='CBE').count()
+        cmhs =  Subscriber.objects.filter(article_category__name='CMHS').count()
+        ce =  Subscriber.objects.filter(article_category__name='CE').count()
+        cass =  Subscriber.objects.filter(article_category__name='CASS').count()
+        cavm =  Subscriber.objects.filter(article_category__name='CAVM').count()
+        labels = ["CST","CBE","CMHS","CE","CASS","CAVM"]
+        default_items = [cst, cbe, cmhs, ce, cass, cavm]
+        data = {
+            "label":labels,
+            "defaultdata":default_items
+
+        }
+        return Response(data)        
+

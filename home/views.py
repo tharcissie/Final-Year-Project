@@ -70,8 +70,12 @@ def article_details(request, pk, template_name='home/article_detail.html'):
 #################     function of announcement details     ###################
 def announcement_details(request, pk, template_name='home/announcement_details.html'):
     announcement = get_object_or_404(Announcement, pk=pk)
+    context = {'announcement':announcement}  
+    return render(request, template_name, context)
 
- 
+
+def announcement_detail(request, pk, template_name='accounts/articles_related/announcement_details.html'):
+    announcement = get_object_or_404(Announcement, pk=pk)
     context = {'announcement':announcement}  
     return render(request, template_name, context)
 

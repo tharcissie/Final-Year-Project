@@ -15,7 +15,7 @@
       <tbody>
           {% for announcement in all_announcements %}
           <tr>
-            <td>{{announcement.title}}</td>
+            <td><a href="{% url 'announcement_detail' announcement.id %}">{{announcement.title}}</a></td>
             <td>{{announcement.short|safe}}</td>
             <td>{{announcement.published_date}}</td>
           </tr>

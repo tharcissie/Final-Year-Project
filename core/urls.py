@@ -17,5 +17,7 @@ urlpatterns = [
 
     path('view/<int:pk>/like/', ArticleLikeToggle.as_view(), name='like_toggle'), #like path
     path('view/<int:pk>/dislike/', ArticleDislikeToggle.as_view(), name='dislike_toggle'),#dislike path
+
+    
  
  ]

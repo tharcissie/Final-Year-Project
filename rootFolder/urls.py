@@ -4,6 +4,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.contrib import admin
 from home.views import tagged
+from core.views import ChartData, ChartData_
 
 
 
@@ -15,6 +16,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('accounts.urls')),
     path('articles/', include('core.urls')),
+
+    path('api/chart/data/', ChartData.as_view()),
+    path('api2/chart/data/', ChartData_.as_view()),
+
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('tag/<slug:slug>/', tagged, name="tagged"),
     

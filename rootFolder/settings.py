@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'taggit',# for tagging
     'crispy_forms', # for crispy forms
     'filters',
+    'rest_framework',
 
 
     #for logging in with social accounts
@@ -83,7 +84,7 @@ CKEDITOR_CONFIGS = {
     
     'default': {
         'toolbar':'Custom',
-        'width':1100,
+        'width':945,
         'toolbar_Custom':[
             ['Styles','Format','Bold','Italic','Underline','Strike','SpellChecker','Undo','Redo'],
             ['Link','Unlink','Anchor'],
@@ -145,11 +146,11 @@ WSGI_APPLICATION = 'rootFolder.wsgi.application'
 # }
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+     }
+ }
 
 
 

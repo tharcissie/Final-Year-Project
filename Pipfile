@@ -18,6 +18,10 @@ django-filter = "*"
 pillow = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
+<<<<<<< HEAD
+djangorestframework = "*"
+=======
+>>>>>>> 6b9e5612527034d05778df1cb9b655a46b1f91c5
 
 [dev-packages]
 

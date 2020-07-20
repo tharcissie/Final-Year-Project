@@ -9,10 +9,9 @@
     <table class="table table-bordered mg-b-0">
       <thead>
         <tr>
-          <th>image</th>
-          <th>username</th>
-          <th>first name</th>
-          <th>last name</th>
+          <th>Profil</th>
+          <th>UserName</th>
+          <th>Email</th>
 
 
         </tr>
@@ -20,10 +19,9 @@
       <tbody>
           {% for user in all_users %}
           <tr>
-            <td>{{user.user.profile.image.url}}</td>
+            <td><img src="{{user.profile.image.url}}" alt="" class="wd-40 rounded-circle ml-4"></td>
             <td>{{user.username}}</td>
-            <td>{{user.first_name}}</td>
-            <td>{{user.last_name}}</td>
+            <td>{{user.email}}</td>
 
 
           </tr>
