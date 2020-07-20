@@ -124,9 +124,7 @@
           <div class="row">
 
             <div class="col-xl-8 mg-t-20 mg-xl-t-0">
-              <div class="bd pd-l-20 pd-y-30 pd-r-30">
-                <div id="chartBar1" class="ht-200 ht-sm-300"></div>
-              </div>
+              <canvas id="myChart" width="300" height="180"></canvas>
             </div>
             <div class="col-xl-4 mg-t-20 mg-xl-t-0">
               <h2>Subscribers</h2>
@@ -138,15 +136,57 @@
 
 
     </div>
+
+
 <script>
-      let showDate = function(message){
+
+  $(document).ready(function(){
+    var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: [{% for  item in chart %} '{{item.name}}', {% endfor %}],
+          datasets: [{
+              label: 'nbr of articles',
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+  });
+  });
+
+
+
+    let showDate = function(message){
         document.getElementById('date').textContent = message 
     }
     let date = new Date();
     showDate(date.toDateString());
-
-
- 
   
 </script>
 {% endblock  %}

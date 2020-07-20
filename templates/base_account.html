@@ -45,6 +45,14 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 
+
+    <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+    <!--Chart js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
   </head>
 
   <body>
@@ -444,26 +452,22 @@
             <a href="" class="btn btn-block btn-outline-secondary tx-uppercase tx-11 tx-spacing-2">Privacy Settings</a>
           </div>
         </div>
-      </div><!-- tab-content -->
-    </div><!-- br-sideright -->
-    <!-- ########## END: RIGHT PANEL ########## --->
-
-    <!-- ########## START: MAIN PANEL ########## -->
+      </div>
+    </div>
+ 
     <div class="br-mainpanel">
       <div class="br-pagebody">
       
     {% block content %}
 
-    <!-- {% for subb in subscribers %}
-    {label: {{ subb.article_category}}, value: 120},
-    {% endfor %} -->
+
     
     {% endblock  %}
 
 
     
 
-      </div><!-- br-pagebody -->
+      </div>
       <footer class="br-footer">
         <div class="footer-left">
           <div class="mg-b-2">Copyright &copy; 2017. Bracket Plus. All Rights Reserved.</div>
@@ -504,23 +508,10 @@
     <script src="{% static 'lib/morris.js/morris.min.js' %}"></script>
     <script src="{% static 'js/chart.morris.js' %}"></script>
 
-
     <script src="{% static 'lib/highlightjs/highlight.pack.min.js' %}"></script>
     <script src="{% static 'js/chart.echarts.js' %}"></script>
 
-
-
-
-
-
-
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyAq8o5-8Y5pudbJMJtDFzb8aHiWJufa5fg"></script>
-
-
-{% block scripts %}
-  
-  {% endblock  %}
-  
 
     <script>
       $(function(){

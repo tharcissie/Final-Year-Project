@@ -1,4 +1,16 @@
-#subs-email #id_email{
+#id_college{
+    width: 350px;
+}
+.subs-list #id_article_category{
+    width: 215px;
+    height: 35px;
+    background: #fff;
+
+}
+.subs-filter-btn{
+    height: 35px;
+}
+.subs-email #id_email{
     width: 250px;
     height: 35px;
 }

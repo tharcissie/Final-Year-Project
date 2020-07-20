@@ -52,11 +52,12 @@ def dashboard(request):
     subscribers = Subscriber.objects.all().count()
     announcements = Announcement.objects.all().count()
     total_users = User.objects.all().count()
+    chart = College.objects.all()
 
 
 
     template_name = 'accounts/articles_related/my_dashboard.html'
-    context = {'total_articles':total_articles,'articles_likes':articles_likes,'announcements':announcements,'subscribers':subscribers,'notifications':notifications,'total_Articles':total_Articles,'total_users':total_users}
+    context = {'total_articles':total_articles,'articles_likes':articles_likes,'announcements':announcements,'subscribers':subscribers,'notifications':notifications,'total_Articles':total_Articles,'total_users':total_users,'chart':chart}
     return render(request, template_name,context)
 
 
