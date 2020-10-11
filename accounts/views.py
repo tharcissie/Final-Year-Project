@@ -103,16 +103,6 @@ def dashboard(request):
 
 
 
-#####################     function for edit article ############
-@login_required
-def edit_article(request, pk):
-    article1 = Article.objects.get(pk=pk)
-    form1 = ArticleForm(request.POST or None, instance=article1)
-    if form1.is_valid():
-        form1.save()
-        return redirect('my_articles')
-    template_name='accounts/articles_related/create_article.html'
-    return render(request, template_name, {'form':form1})
 
 
 
@@ -339,3 +329,16 @@ def create_article(request):
     
     template_name='account/create_article.html'
     return render(request, template_name, {'form':form})
+
+
+
+#####################     function for editing article  ############
+@login_required
+def edit_article(request, pk):
+    article1 = Article.objects.get(pk=pk)
+    form1 = ArticleForm(request.POST or None, instance=article1)
+    if form1.is_valid():
+        form1.save()
+        return redirect('my_articles')
+    template_name='account/create_article.html'
+    return render(request, template_name, {'form':form1})

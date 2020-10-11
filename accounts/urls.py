@@ -15,7 +15,6 @@ urlpatterns = [
     path('dashboard/', dashboard, name='dashboard'),
 
     path('article-details/<int:pk>/', article_detail, name='article_details'),
-    path('edit-article/<int:pk>', edit_article, name='edit_article'),
 
 
 
@@ -26,6 +25,7 @@ urlpatterns = [
     # path('all-published-articles/',published_articles,name='all_published_articles'),
 
     path('create-article/', create_article, name='create_article'),
+    path('edit-article/<int:pk>', edit_article, name='edit_article'),
     path('my-articles/', my_articles, name='my_articles'),
 
 
