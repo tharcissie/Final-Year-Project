@@ -14,6 +14,7 @@ from rootFolder.settings import EMAIL_HOST_USER
 
 
 
+
 #################     function of rendering the homepage     ###################
 def homepage(request):
     articles = Article.objects.all().order_by('-id')

@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+
+{% block content %}
+  
+<div class="main-container">
+	<div class="pd-ltr-20 xs-pd-20-10">
+		<div class="min-height-200px">
+			<div class="page-header">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="title">
+							<h4>Announcements</h4>
+						</div>
+						<nav aria-label="breadcrumb" role="navigation">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Announcements</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+			
+		
+	
+			<div class="row clearfix">
+				{% for announcement in announcements %}
+				<div class="col-sm-12 col-md-4 mb-30">
+					<div class="card card-box text-center">
+						<div class="card-body">
+							<h5 class="card-title">{{announcement.title}}</h5>
+							<p class="card-text">{{announcement.short|safe}}</p>
+							<a href="announcement_details.html" class="btn btn-primary">Read more</a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			
+		</div>
+		<div class="footer-wrap pd-20 mb-20 card-box">
+			DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+		</div>
+	</div>
+</div>
+
+{% endblock  %}

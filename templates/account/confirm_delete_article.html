@@ -1,0 +1,82 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<style>
+.conf-delete{
+    color:darkblue ;
+}
+</style>
+<div class="main-container">
+	<div class="pd-ltr-20 xs-pd-20-10">
+		<div class="min-height-200px">
+			<div class="page-header">
+				<div class="row">
+					<div class="col-md-8 mx-auto">
+                        <form method="post" action="">
+                            {% csrf_token %}
+                                <div class="row mg-l-100">
+                                    <div class="col-lg-8 mx-auto">
+                                        Are you sure you want to delete <span class="conf-delete">"{{ object }}"</span> Article ?
+                                    </div>
+                                </div>
+                                <div class="row  mt-4">
+                                    <div class="col-lg-2 mx-auto">
+                                        <button class="btn btn-danger" type="submit">Yes</button>
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
+				</div>
+			</div>
+	
+	
+		
+			
+		</div>
+		<div class="footer-wrap pd-20 mb-20 card-box">
+			DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="br-section-wrapper mt-5">
+    
+    </div>
+
+{% endblock %}

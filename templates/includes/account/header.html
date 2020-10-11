@@ -1,0 +1,59 @@
+<div class="header">
+    <div class="header-left">
+        <div class="menu-icon dw dw-menu"></div>
+        <div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
+        <div class="header-search">
+        
+        </div>
+    </div>
+    <div class="header-right">
+        <div class="dashboard-setting user-notification">
+            <div class="dropdown">
+                <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
+                    <i class="dw dw-settings2"></i>
+                </a>
+            </div>
+        </div>
+        <div class="user-notification">
+            <div class="dropdown">
+                <a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
+                    <i class="icon-copy dw dw-notification"></i>
+                    <span class="badge notification-active"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="notification-list mx-h-350 customscroll">
+                        <ul>
+                            {% for article in latest %}
+                            <li>
+                                <a href="{% url 'articleDetails' article.id %}">
+                                    <img src="{{article.picture.url}}" alt="">
+                                    <h3>{{article.noti}}</h3>
+                                    <p>{{article.noti1|safe}}</p>
+                                </a>
+                            </li>
+
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="user-info-dropdown">
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                    <span class="user-icon">
+                        <img src="{{user.profile.image.url}}" alt="">
+                    </span>
+                    <span class="user-name">{{ user.username }}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                    <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
+                    <a class="dropdown-item" href="{% url 'change_password' %}"><i class="dw dw-settings2"></i> Change password</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}"><i class="dw dw-logout"></i> Log Out</a>
+                </div>
+            </div>
+        </div>
+        <div class="github-link">
+        </div>
+    </div>
+</div>

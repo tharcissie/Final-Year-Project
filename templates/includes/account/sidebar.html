@@ -1,0 +1,77 @@
+<div class="left-side-bar">
+    <div class="brand-logo">
+        <a href="index.html">
+            <h4 class="text-white">UR IDEAS</h4>
+        
+        </a>
+        <div class="close-sidebar" data-toggle="left-sidebar-close">
+            <i class="ion-close-round"></i>
+        </div>
+    </div>
+    <div class="menu-block customscroll">
+        <div class="sidebar-menu">
+            <ul id="accordion-menu">
+                <li>
+                    <a href="{% url 'dashboard' %}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-house-1"></span><span class="mtext">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'users' %}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-diagram"></span><span class="mtext">Users</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'subscribers' %}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-diagram"></span><span class="mtext">Subscribers</span>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-edit2"></span><span class="mtext">Published Articles</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{% url 'cstArticles' %}">CST</a></li>
+                        <li><a href="{% url 'cmhsArticles' %}">CMHS</a></li>
+                        <li><a href="{% url 'cassArticles' %}">CASS</a></li>
+                        <li><a href="{% url 'cavmArticles' %}">CAVM</a></li>
+                        <li><a href="{% url 'cbeArticles' %}">CBE</a></li>
+                        <li><a href="{% url 'ceArticles' %}">CE</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-edit2"></span><span class="mtext">Announcements</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{% url 'new_announcement' %}">New Announcement</a></li>
+                        <li><a href="{% url 'announcements' %}">Published Announcement</a></li>
+                    </ul>
+                </li>
+            
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                    <div class="sidebar-small-cap">Extra</div>
+                </li>
+        
+                <li>
+                    <a href="invoice.html" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-invoice"></span><span class="mtext">Update Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'change_password' %}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-invoice"></span><span class="mtext">Change Password</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-invoice"></span><span class="mtext">Log Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

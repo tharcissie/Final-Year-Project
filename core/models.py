@@ -41,7 +41,13 @@ class Article( models.Model):
 
 
     def snippet(self):
-        return self.message[:60]+ '....'
+        return self.message[:300]+'.'
+
+    def snippet2(self):
+        return self.message[:100]+'.'
+
+    def noti1(self):
+        return self.message[:60]+ '..'
 
     def topic(self):
         return self.subject[:39]+ '..'

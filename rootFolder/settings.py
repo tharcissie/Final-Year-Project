@@ -201,7 +201,7 @@ MEDIA_URL = '/media/'
 
 
 LOGOUT_REDIRECT_URL = 'homepage'
-LOGIN_REDIRECT_URL = 'my_dashboard'
+LOGIN_REDIRECT_URL = 'dashboard'
 
 LOGIN_URL = 'login'
 

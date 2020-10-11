@@ -1,0 +1,98 @@
+{% extends 'index.html' %}
+
+{% block content %}
+  
+<div class="main-container">
+	<div class="pd-ltr-20 height-100-p xs-pd-20-10">
+		<div class="min-height-200px">
+			<div class="page-header">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="title">
+							<h4>College of Science and Technology</h4>
+						</div>
+						<nav aria-label="breadcrumb" role="navigation">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+								<li class="breadcrumb-item active" aria-current="page">CST Articles</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<div class="blog-wrap">
+				<div class="container pd-0">
+					<div class="row">
+						<div class="col-md-8 col-sm-12">
+							<div class="blog-list">
+								<ul>
+									
+									{% for article in cst %}
+									<li>
+										<div class="row no-gutters">
+											<div class="col-lg-4 col-md-12 col-sm-12">
+												<div class="blog-img">
+													<img src="{{article.picture.url}}" alt="" class="bg_img">
+												</div>
+											</div>
+											<div class="col-lg-8 col-md-12 col-sm-12">
+												<div class="blog-caption">
+													<h4>{{article.subject}}</h4>
+													<div class="blog-by">
+														<p>{{article.snippet|safe}}</p>
+														<div class="pt-10">
+															<a href="{% url 'articleDetails' article.id %}" class="btn btn-outline-primary">Read More</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+									{% endfor %}
+										
+								</ul>
+							</div>
+							<div class="blog-pagination">
+								<div class="btn-toolbar justify-content-center mb-15">
+									<div class="btn-group">
+										<a href="#" class="btn btn-outline-primary prev"><i class="fa fa-angle-double-left"></i></a>
+										<a href="#" class="btn btn-outline-primary">1</a>
+										<a href="#" class="btn btn-outline-primary">2</a>
+										<span class="btn btn-primary current">3</span>
+										<a href="#" class="btn btn-outline-primary">4</a>
+										<a href="#" class="btn btn-outline-primary">5</a>
+										<a href="#" class="btn btn-outline-primary next"><i class="fa fa-angle-double-right"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-12">
+						
+							<div class="card-box mb-30">
+								<h5 class="pd-20 h5 mb-0">Latest Articles</h5>
+								<hr>
+								<div class="latest-post">
+									<ul>
+										
+										{% for article in latest %}
+										<li>
+											<h4><a href="{% url 'articleDetails' article.id %}">{{article.subject}}</a></h4>
+											<span>{{article.snippet2|safe}}</span>
+										</li>
+										{% endfor %}
+
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-wrap pd-20 mb-20 card-box">
+			DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

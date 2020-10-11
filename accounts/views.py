@@ -11,6 +11,8 @@ from rootFolder.settings import EMAIL_HOST_USER
 from core.models import *
 from .filters import *
 from .forms import *
+from django.contrib import messages
+from django.contrib.auth import  update_session_auth_hash
 
 
 
@@ -44,22 +46,56 @@ def signup(request):
 
 #####################     function for count user articles  ############
 @login_required
+# def dashboard(request):
+#     total_articles = Article.objects.filter(author=request.user).count()
+#     articles_likes  = Article.objects.filter(author=request.user)
+#     notifications = Article.objects.all().order_by('-id')[:4]
+#     total_Articles = Article.objects.all().count()
+#     subscribers = Subscriber.objects.all().count()
+#     announcements = Announcement.objects.all().count()
+#     total_users = User.objects.all().count()
+#     chart = College.objects.all()
+
+
+
+#     template_name = 'accounts/articles_related/my_dashboard.html'
+#     context = {'total_articles':total_articles,'articles_likes':articles_likes,'announcements':announcements,'subscribers':subscribers,'notifications':notifications,'total_Articles':total_Articles,'total_users':total_users,'chart':chart}
+#     return render(request, template_name,context)
+
 def dashboard(request):
     total_articles = Article.objects.filter(author=request.user).count()
     articles_likes  = Article.objects.filter(author=request.user)
-    notifications = Article.objects.all().order_by('-id')[:4]
+    chart = College.objects.all()
+
+    articles = Article.objects.all()
+    latest = Article.objects.all().order_by('-id')[:5]
+
+
     total_Articles = Article.objects.all().count()
     subscribers = Subscriber.objects.all().count()
     announcements = Announcement.objects.all().count()
     total_users = User.objects.all().count()
-    chart = College.objects.all()
 
 
 
-    template_name = 'accounts/articles_related/my_dashboard.html'
-    context = {'total_articles':total_articles,'articles_likes':articles_likes,'announcements':announcements,'subscribers':subscribers,'notifications':notifications,'total_Articles':total_Articles,'total_users':total_users,'chart':chart}
+
+    template_name = 'account/dashboard.html'
+    context = {
+        'total_articles':total_articles,
+        'articles_likes':articles_likes,
+        'chart':chart,
+
+        'articles':articles,
+        'latest':latest,
+
+
+        'announcements':announcements,
+        'subscribers':subscribers,
+        'total_Articles':total_Articles,
+        'total_users':total_users
+
+        }
     return render(request, template_name,context)
-
 
 #####################     function for create article ############
 
@@ -110,15 +146,6 @@ def edit_article(request, pk):
     return render(request, template_name, {'form':form1})
 
 
-###################   function for delete article ############
-@login_required
-def delete_article(request, pk):
-    article= get_object_or_404(Article, pk=pk)    
-    if request.method=='POST':
-        article.delete()
-        return redirect('my_articles')
-    template_name='accounts/articles_related/confirm_delete_article.html'
-    return render(request, template_name, {'object':article})
 
 
 ###################   function for article details ############
@@ -144,20 +171,6 @@ def article_detail(request, pk, template_name='accounts/articles_related/article
 
 
 
-##################  function for changing user password  #########
-@login_required
-def change_password(request):
-    if request.method == 'POST':
-        form = PasswordChangeForm(data=request.POST, user=request.user)
-        if form.is_valid():
-            form.save()
-            # update_session_auth_hash(request, form.user)
-            return redirect('my_dashboard')
-        else:
-            return redirect('change_password')
-    else:
-        form = PasswordChangeForm(user=request.user)
-        return render(request, 'registration/change_password.html', {'form': form})
 
 #################   function for updating user profile inforamtion and profile picture   ##################
 
@@ -177,13 +190,6 @@ def update_profile(request):
     return render(request, 'accounts/update_profile.html',{'p_form':p_form})
 
 
-@login_required
-def new_announcement(request):
-    form = AnnouncementCreateForm(request.POST)
-    if form.is_valid():
-            form.save()
-            return redirect('my_dashboard')
-    return render(request, 'accounts/new_announcement.html',{'form':form})
 
 
 
@@ -211,4 +217,105 @@ def all_subscribers(request):
 def all_users(request):
     all_users = User.objects.all()
     return render(request, 'accounts/all_users.html',{'all_users':all_users})
+
+
+
+
+def users(request):
+    users = User.objects.all()
+    return render(request, 'account/users.html',{'users':users})
+
+
+def subscribers(request):
+    subscribers = Subscriber.objects.all()
+    # subscribers_filter = SubscriberFilter(request.GET, queryset=subscribers)
+    return render(request, 'account/subscribers.html',{'subscribers':subscribers})
+
+
+def cstArticles(request):
+    cst = Article.objects.filter(college__name='CST')
+    latest = Article.objects.filter(college__name='CST').order_by('-id')[:5]
+    return render(request,'account/cst.html',{'cst':cst,'latest':latest})
+
+
+def cbeArticles(request):
+    cbe = Article.objects.filter(college__name='CBE')
+    latest = Article.objects.filter(college__name='CBE').order_by('-id')[:5]
+    return render(request,'account/cbe.html',{'cbe':cbe,'latest':latest})
+
+
+def ceArticles(request):
+    ce = Article.objects.filter(college__name='CE')
+    latest = Article.objects.filter(college__name='CE').order_by('-id')[:5]
+    return render(request,'account/ce.html',{'ce':ce,'latest':latest})
+
+
+def cmhsArticles(request):
+    cmhs = Article.objects.filter(college__name='CMHS')
+    latest = Article.objects.filter(college__name='CMHS').order_by('-id')[:5]
+    return render(request,'account/cmhs.html',{'cmhs':cmhs,'latest':latest})
+
+
+def cavmArticles(request):
+    cavm = Article.objects.filter(college__name='CAVM')
+    latest = Article.objects.filter(college__name='CAVM').order_by('-id')[:5]
+    return render(request,'account/cavm.html',{'cavm':cavm,'latest':latest})
+
+
+def cassArticles(request):
+    cass = Article.objects.filter(college__name='CASS')
+    latest = Article.objects.filter(college__name='CASS').order_by('-id')[:5]
+    return render(request,'account/cass.html',{'cass':cass,'latest':latest})
+
+
+def articleDetails(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    latest = Article.objects.all().order_by('-id')[:8]
+    return render(request,'account/article_details.html',{'article':article,'latest':latest})
+
+
+###################   function for delete article ############
+@login_required
+def delete_article(request, pk):
+    article= get_object_or_404(Article, pk=pk)    
+    if request.method=='POST':
+        article.delete()
+        return redirect('dashboard')
+    template_name='account/confirm_delete_article.html'
+    return render(request, template_name, {'object':article})
+
+
+##################  function for creating new announcement  #########
+@login_required
+def new_announcement(request):
+    form = AnnouncementCreateForm(request.POST)
+    if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    return render(request, 'account/new_announcement.html',{'form':form})
+
+
+##################  function for retrieving all announcements  #########
+def announcements(request):
+    announcements = Announcement.objects.all()
+    return render(request, 'account/announcements.html',{'announcements':announcements})
+
+
+##################  function for changing user password  #########
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(data=request.POST, user=request.user)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            messages.success(request, "Your Password has been updated successfully !")
+            return redirect('dashboard')
+        else:
+            messages.success(request, "Your Password did not match")
+            return redirect('change_password')
+    else:
+        form = PasswordChangeForm(user=request.user)
+        return render(request, 'account/change_password.html', {'form': form})
+
 
