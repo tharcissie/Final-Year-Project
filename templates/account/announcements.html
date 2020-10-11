@@ -30,7 +30,7 @@
 						<div class="card-body">
 							<h5 class="card-title">{{announcement.title}}</h5>
 							<p class="card-text">{{announcement.short|safe}}</p>
-							<a href="announcement_details.html" class="btn btn-primary">Read more</a>
+							<a href="{% url 'announcement_details' announcement.id %}" class="btn btn-primary">Read more</a>
 						</div>
 					</div>
 				</div>

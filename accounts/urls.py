@@ -43,6 +43,7 @@ urlpatterns = [
     path('delete-article/<int:pk>', delete_article, name='delete_article'),
 
     path('new-announcement/',new_announcement,name='new_announcement'),
+    path('announcement/details/<int:pk>/', announcement_details, name='announcement_details'),
     path('announcements/',announcements,name='announcements'),
 
     path('settings/password/', change_password, name='change_password'),

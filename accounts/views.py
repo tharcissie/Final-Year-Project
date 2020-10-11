@@ -285,6 +285,17 @@ def announcements(request):
     return render(request, 'account/announcements.html',{'announcements':announcements})
 
 
+##################  function for viewing announcement details  #########
+def announcement_details(request, pk):
+    announcement = get_object_or_404(Announcement, pk=pk)
+    latest = Announcement.objects.all().order_by('-id')[:5]
+    context = {
+        'announcement':announcement,
+        'latest':latest
+        }  
+    return render(request, 'account/announcement_details.html', context)
+
+
 ##################  function for changing user password  #########
 @login_required
 def change_password(request):
