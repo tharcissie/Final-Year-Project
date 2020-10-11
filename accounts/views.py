@@ -100,39 +100,8 @@ def dashboard(request):
 #####################     function for create article ############
 
 
-def subscriber():
-    subscribers_list = []
-
-    subscribers = Subscriber.objects.all()
-
-    for subscriber in subscribers:
-        subscribers_list.append(subscriber.email)
-
-    return subscribers_list
-
-@login_required
-def article_create(request):
-    form = ArticleForm(request.POST or None ,files=request.FILES)
-    if form.is_valid():
-        form.save()
-        subject = "Hello Subscriber"
-        message = 'A new article from your choice has been created, be the first to read it and share your feedback'
-        send_mail(subject, message, EMAIL_HOST_USER,subscriber())
-        return redirect('my_dashboard')
-
-    
-    template_name='accounts/articles_related/create_article.html'
-    return render(request, template_name, {'form':form})
 
 
-#################  function for view user articles  ############
-@login_required
-def my_articles(request):
-    my_articles = Article.objects.filter(author=request.user)
-
-    template_name = 'accounts/articles_related/my_articles.html'
-    context = {'my_articles':my_articles}
-    return render(request, template_name, context)
 
 #####################     function for edit article ############
 @login_required
@@ -327,3 +296,46 @@ def update_profile(request):
     p_form = ProfileUpdateForm(instance=request.user.profile)
 
     return render(request, 'account/update_profile.html',{'p_form':p_form})
+
+
+
+
+
+
+#################  function for viewing regular user articles  ############
+@login_required
+def my_articles(request):
+    my_articles = Article.objects.filter(author=request.user)
+
+    template_name = 'account/my_articles.html'
+    context = {'my_articles':my_articles}
+    return render(request, template_name, context)
+
+
+
+
+
+#################  function for creating  article  ############
+def subscriber():
+    subscribers_list = []
+
+    subscribers = Subscriber.objects.all()
+
+    for subscriber in subscribers:
+        subscribers_list.append(subscriber.email)
+
+    return subscribers_list
+
+@login_required
+def create_article(request):
+    form = ArticleForm(request.POST or None ,files=request.FILES)
+    if form.is_valid():
+        form.save()
+        subject = "Hello Subscriber"
+        message = 'A new article from your choice has been created, be the first to read it and share your feedback'
+        send_mail(subject, message, EMAIL_HOST_USER,subscriber())
+        return redirect('dashboard')
+
+    
+    template_name='account/create_article.html'
+    return render(request, template_name, {'form':form})

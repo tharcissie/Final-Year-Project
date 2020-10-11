@@ -14,20 +14,22 @@ urlpatterns = [
 
     path('dashboard/', dashboard, name='dashboard'),
 
-    path('create-article/', article_create, name='create_article'),
-    path('my-articles/', my_articles, name='my_articles'),
     path('article-details/<int:pk>/', article_detail, name='article_details'),
     path('edit-article/<int:pk>', edit_article, name='edit_article'),
 
 
 
-    path('all-announcements/',all_announcements,name='all_announcements'),
-    path('all-published-articles/',published_articles,name='all_published_articles'),
-    path('all-users/',all_users,name='all_users'),
-    path('all-subscribers/',all_subscribers,name='all_subscribers'),
+    # path('all-announcements/',all_announcements,name='all_announcements'),
+    # path('all-users/',all_users,name='all_users'),
+    # path('all-subscribers/',all_subscribers,name='all_subscribers'),
+
+    # path('all-published-articles/',published_articles,name='all_published_articles'),
+
+    path('create-article/', create_article, name='create_article'),
+    path('my-articles/', my_articles, name='my_articles'),
 
 
-    # new
+    # paths for superuser
 
     path('users/',users,name='users'),
     path('subscribers/',subscribers,name='subscribers'),

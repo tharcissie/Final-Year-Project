@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+
+
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Create New Article</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+         
+            <div class="pd-20 card-box mb-30">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    {{form.media}}
+                    {% include 'includes/form.html' %}
+                    <button type="submit" class="btn btn-primary btn-sm">Create</button>
+                </form>
+            </div>
+        </div>
+    	{% include "includes/account/footer.html" %}
+
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{form.media}}
+    {% include 'includes/form.html' %}
+    <div class="mt-5">
+    <button type="submit" class=".btn-change-create btn btn-info float-left ">Create</button>
+    </div>
+</form>
