@@ -20,7 +20,6 @@ urlpatterns = [
     path('edit-article/<int:pk>', edit_article, name='edit_article'),
 
 
-    path('update_profile/', update_profile, name='update_profile'),
 
     path('all-announcements/',all_announcements,name='all_announcements'),
     path('all-published-articles/',published_articles,name='all_published_articles'),
@@ -47,5 +46,7 @@ urlpatterns = [
     path('announcements/',announcements,name='announcements'),
 
     path('settings/password/', change_password, name='change_password'),
+    path('settings/update-profile/', update_profile, name='update_profile'),
+
 
  ]

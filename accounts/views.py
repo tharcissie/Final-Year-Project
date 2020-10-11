@@ -172,22 +172,6 @@ def article_detail(request, pk, template_name='accounts/articles_related/article
 
 
 
-#################   function for updating user profile inforamtion and profile picture   ##################
-
-@login_required
-def update_profile(request):
-
-    if request.method == 'POST':
-        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-
-        if p_form.is_valid():
-            p_form.save()
-      
-            return redirect('update_profile')
-    else:
-        p_form = ProfileUpdateForm(instance=request.user.profile)
-
-    return render(request, 'accounts/update_profile.html',{'p_form':p_form})
 
 
 
@@ -319,3 +303,16 @@ def change_password(request):
         return render(request, 'account/change_password.html', {'form': form})
 
 
+#################   function for updating user profile inforamtion and profile picture   ##################
+@login_required
+def update_profile(request):
+
+    if request.method == 'POST':
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if p_form.is_valid():
+            p_form.save()
+            return redirect('update_profile')
+    p_form = ProfileUpdateForm(instance=request.user.profile)
+
+    return render(request, 'account/update_profile.html',{'p_form':p_form})

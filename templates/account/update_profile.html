@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+    
+<style>
+.profile-username{
+    text-transform: capitalize;
+}
+form label{
+    display:none;
+}
+</style>
+
+<div class="main-container">
+	<div class="pd-ltr-20 xs-pd-20-10">
+		<div class="min-height-200px">
+			<div class="page-header">
+				<div class="row">
+					<div class="col-md-6 col-sm-12">
+						<div class="title">
+						</div>
+						<nav aria-label="breadcrumb" role="navigation">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Update Profile</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<div class="pd-20 card-box mb-30">
+                <div class="row">
+                    <div class="col-md-2 mx-auto">
+                        <img src="{{ user.profile.image.url }}" class="wd-100 rounded-circle" alt="">
+                        <h4 class="text-center mt-4 profile-username">{{user.username}}</h4>
+                        <h6 class="text-center mt-4">Email :</h6>
+                        <p class="mb-4 text-center">{{user.email}}</p>
+
+                        <form method="POST" novalidate enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ p_form }}
+                            <button type="submit" class=".btn-change-create btn btn-info mt-4">Update</button>
+                        </form>
+                    </div>
+                </div>
+			</div>
+			
+		</div>
+        {% include "includes/account/footer.html" %}
+
+	</div>
+</div>
+{% endblock  %}
+    
