@@ -2,8 +2,14 @@
 {% load static %}
 
 {% block content %}
-  
+<style>
+    .reg-username{
+        font-weight: 400;
+        text-transform: capitalize;
+    }
+</style>
 
+{% if request.user.is_superuser %}
 <div class="main-container">
     <div class="pd-ltr-20">
             {% for message in messages %}
@@ -141,5 +147,85 @@
         {% include "includes/account/footer.html" %}
     </div>
 </div>
+{% else %}
 
+<div class="main-container">
+    <div class="pd-ltr-20">
+            {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+				<strong>Hello {{user.username}} !</strong> {{ message }}.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+			{% endfor %}
+        
+        <div class="card-box pd-20 height-100-p mb-30">
+          <div class="row">
+              <div class="col-md-6 mx-auto">
+                  <h4 class="text-center">Welcome Back</h4>
+                  <h4 class="text-center mt-3 reg-username">{{user.username}}</h4>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-3 mb-30">
+                <div class="card-box height-100-p widget-style1">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="progress-data">
+                            <div id="chart"></div>
+                        </div>
+                        <div class="widget-data">
+                            <div class="h4 mb-0">{{total_Articles}}</div>
+                            <div class="weight-600 font-14">Articles</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 mb-30">
+                <div class="card-box height-100-p widget-style1">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="progress-data">
+                            <div id="chart2"></div>
+                        </div>
+                        <div class="widget-data">
+                            <div class="h4 mb-0">{{total_users}}</div>
+                            <div class="weight-600 font-14">Users</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 mb-30">
+                <div class="card-box height-100-p widget-style1">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="progress-data">
+                            <div id="chart3"></div>
+                        </div>
+                        <div class="widget-data">
+                            <div class="h4 mb-0">{{subscribers}}</div>
+                            <div class="weight-600 font-14">Subscribers</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 mb-30">
+                <div class="card-box height-100-p widget-style1">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="progress-data">
+                            <div id="chart4"></div>
+                        </div>
+                        <div class="widget-data">
+                            <div class="h4 mb-0">{{announcements}}</div>
+                            <div class="weight-600 font-14">Announcements</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+      
+        {% include "includes/account/footer.html" %}
+    </div>
+</div>
+{% endif %}
 {% endblock  %}

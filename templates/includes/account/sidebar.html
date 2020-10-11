@@ -11,6 +11,7 @@
     <div class="menu-block customscroll">
         <div class="sidebar-menu">
             <ul id="accordion-menu">
+                {% if request.user.is_superuser %}
                 <li>
                     <a href="{% url 'dashboard' %}" class="dropdown-toggle no-arrow">
                         <span class="micon dw dw-house-1"></span><span class="mtext">Dashboard</span>
@@ -71,6 +72,49 @@
                         <span class="micon dw dw-invoice"></span><span class="mtext">Log Out</span>
                     </a>
                 </li>
+                
+                {% else %}
+
+                <li>
+                    <a href="{% url 'dashboard' %}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-invoice"></span><span class="mtext">Account</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'update_profile' %}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-invoice"></span><span class="mtext">New Article</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'update_profile' %}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-invoice"></span><span class="mtext">Published Articles</span>
+                    </a>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                    <div class="sidebar-small-cap">Settings</div>
+                </li>
+        
+                <li>
+                    <a href="{% url 'update_profile' %}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-invoice"></span><span class="mtext">Update Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'change_password' %}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-invoice"></span><span class="mtext">Change Password</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-invoice"></span><span class="mtext">Log Out</span>
+                    </a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>
