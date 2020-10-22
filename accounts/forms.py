@@ -44,7 +44,7 @@ class ArticleForm(forms.ModelForm):
 
     class Meta:
         model   = Article
-        fields  = ['subject', 'message','college', 'picture', 'tags']
+        fields  = ['subject', 'message','college', 'image', 'tags']
 
 
 

@@ -32,7 +32,7 @@ class Article( models.Model):
     updated_at = models.DateTimeField( auto_now=True, null=True)
     author     = UserForeignKey(auto_user_add=True, on_delete=models.CASCADE)
     college    = models.ForeignKey(College, on_delete=models.CASCADE)
-    picture    = models.ImageField(upload_to='article_images',null=True, default="")
+    image    = models.ImageField(upload_to='article_images',null=True, default="")
     likes      = models.ManyToManyField(User, related_name='article_likes', blank=True)
     dislikes   = models.ManyToManyField(User, related_name='article_dislikes', blank=True)# likes field
     
